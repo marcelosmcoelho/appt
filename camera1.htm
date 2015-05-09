@@ -31,8 +31,8 @@
     function onPhotoURISuccess(imageURI) {
 
       document.getElementById('resultado5').src=imageURI;
-    
-	  window.resolveLocalFileSystemURI(imageURI, gotFileEntry, fsFail); 
+      alert("imageURI:" + imageURI)
+	 // window.resolveLocalFileSystemURI(imageURI, gotFileEntry, fsFail); 
 	}
 
     function getPhoto(source) {
