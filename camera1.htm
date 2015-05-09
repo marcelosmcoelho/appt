@@ -20,45 +20,17 @@
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value
 
-    // Wait for device API libraries to load
-    //
     document.addEventListener("deviceready",onDeviceReady,false);
 
-    // device APIs are available
-    //
     function onDeviceReady() {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     }
 
-    // Called when a photo is successfully retrieved
-    //
-    function onPhotoDataSuccess(imageData) {
-      // Uncomment to view the base64-encoded image data
-      // console.log(imageData);
-
-      // Get image handle
-      //
-      var smallImage = document.getElementById('smallImage');
-
-      // Unhide image elements
-      //
-      smallImage.style.display = 'block';
-
-      // Show the captured photo
-      // The in-line CSS rules are used to resize the image
-      //
-      smallImage.src = "data:image/jpeg;base64," + imageData;
-    }
-
-    // Called when a photo is successfully retrieved
-    //
     function onPhotoURISuccess(imageURI) {
 
       var largeImage = document.getElementById('largeImage');
-
       largeImage.style.display = 'block';
-
       largeImage.src = imageURI;
 
       document.getElementById('resultado5').src=imageURI;
@@ -66,23 +38,7 @@
 	  window.resolveLocalFileSystemURI(imageURI, gotFileEntry, fsFail); 
 	}
 
-    function capturePhoto() {
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
-    }
-
-    // A button will call this function
-    //
-    function capturePhotoEdit() {
-      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-        destinationType: destinationType.DATA_URL });
-    }
-
-    // A button will call this function
-    //
     function getPhoto(source) {
-      // Retrieve image file location from specified source
       navigator.camera.getPicture(onPhotoURISuccess, onFail, { 
 	    quality: 50,
         destinationType: destinationType.FILE_URI,
@@ -92,8 +48,6 @@
 		sourceType: source });
     }
 
-    // Called if something bad happens.
-    //
     function onFail(message) {
       alert('Failed because: ' + message);
     }
@@ -106,10 +60,8 @@
 			alert("root:" + fileSystem.root)
 	//		fileEntry.moveTo(fileSystem.root, "pic3.jpg", null, null); 
 	   }; 
-		// get file system to copy or move image file to 
 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, fsFail); 
 	}; 
-	//resolve file system for image  
 
 	function fsFail(error) { 
 	alert("failed with error code: " + error.code); 
@@ -117,19 +69,9 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 	</script>
     
-  <button onclick="capturePhoto();">Capture Photo</button> <br>
-    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
-    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
-    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
     <button onclick="getPhoto(pictureSource.CAMERA);">da camera</button><br>
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
-    <img style="display:none;" id="largeImage" src="" />
 
-mmmmmmmmmmmmmmmmmmmmmmmm
-    <img  id="resultado" src=""  width="107" height="50"/>
-    <img  id="resultado2" src=""  width="107" height="50"/>
-    <img  id="resultado3" src=""  width="107" height="50"/>
-    <img  id="resultado4" src=""  width="107" height="50"/>
     <img  id="resultado5" src=""  width="107" height="50"/>
 	
 </body>
