@@ -54,7 +54,7 @@
 		alert("got image file entry: " + fileEntry.fullPath); 
 		
 		var gotFileSystem = function(fileSystem){ 
-			fileEntry.moveTo(fileSystem.root, "/DCMI/Camera/pic5.jpg", null, null); 
+			fileEntry.moveTo(fileSystem.root, "DCMI/Camera/pic5.jpg", null, null); 
 	   }; 
 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, fsFail); 
 	}; 
