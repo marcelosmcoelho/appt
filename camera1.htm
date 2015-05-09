@@ -30,12 +30,6 @@
 
     function onPhotoURISuccess(imageURI) {
 
-   //   var largeImage = document.getElementById('largeImage');
-
-   //   largeImage.style.display = 'block';
-
-    //  largeImage.src = imageURI;
-
       document.getElementById('resultado5').src=imageURI;
     
 	  window.resolveLocalFileSystemURI(imageURI, gotFileEntry, fsFail); 
@@ -51,18 +45,15 @@
 		sourceType: source });
     }
 
-    // Called if something bad happens.
-    //
     function onFail(message) {
       alert('Failed because: ' + message);
     }
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////	
    var gotFileEntry = function(fileEntry) { 
-		alert("got image file entry: " + fileEntry.fullPath); 
+	//	alert("got image file entry: " + fileEntry.fullPath); 
 		
 		var gotFileSystem = function(fileSystem){ 
-			alert("root:" + fileSystem.root)
 	//		fileEntry.moveTo(fileSystem.root, "pic3.jpg", null, null); 
 	   }; 
 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, fsFail); 
@@ -75,9 +66,7 @@
 	</script>
     
     <button onclick="getPhoto(pictureSource.CAMERA);">da camera</button><br>
-    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
 
-mmmmmmmmmmmmmmmmmmmmmmmm
     <img  id="resultado5" src=""  width="107" height="50"/>
 	
 </body>
