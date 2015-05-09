@@ -20,17 +20,45 @@
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value
 
+    // Wait for device API libraries to load
+    //
     document.addEventListener("deviceready",onDeviceReady,false);
 
+    // device APIs are available
+    //
     function onDeviceReady() {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     }
 
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoDataSuccess(imageData) {
+      // Uncomment to view the base64-encoded image data
+      // console.log(imageData);
+
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    // Called when a photo is successfully retrieved
+    //
     function onPhotoURISuccess(imageURI) {
 
       var largeImage = document.getElementById('largeImage');
+
       largeImage.style.display = 'block';
+
       largeImage.src = imageURI;
 
       document.getElementById('resultado5').src=imageURI;
@@ -48,6 +76,8 @@
 		sourceType: source });
     }
 
+    // Called if something bad happens.
+    //
     function onFail(message) {
       alert('Failed because: ' + message);
     }
@@ -60,8 +90,10 @@
 			alert("root:" + fileSystem.root)
 	//		fileEntry.moveTo(fileSystem.root, "pic3.jpg", null, null); 
 	   }; 
+		// get file system to copy or move image file to 
 	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, fsFail); 
 	}; 
+	//resolve file system for image  
 
 	function fsFail(error) { 
 	alert("failed with error code: " + error.code); 
@@ -71,7 +103,9 @@
     
     <button onclick="getPhoto(pictureSource.CAMERA);">da camera</button><br>
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <img style="display:none;" id="largeImage" src="" />
 
+mmmmmmmmmmmmmmmmmmmmmmmm
     <img  id="resultado5" src=""  width="107" height="50"/>
 	
 </body>
