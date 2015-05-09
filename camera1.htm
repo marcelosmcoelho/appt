@@ -51,7 +51,7 @@
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////	
    var gotFileEntry = function(fileEntry) { 
-	//	alert("got image file entry: " + fileEntry.fullPath); 
+		alert("got image file entry: " + fileEntry.fullPath); 
 		
 		var gotFileSystem = function(fileSystem){ 
 			fileEntry.moveTo(fileSystem.root, "pic4.jpg", null, null); 
