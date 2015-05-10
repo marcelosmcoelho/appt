@@ -32,7 +32,6 @@
 
       document.getElementById('resultado5').src=imageURI;
       alert("imageURI:" + imageURI)
-	 // window.resolveLocalFileSystemURI(imageURI, gotFileEntry, fsFail); 
 	}
 
     function getPhoto(source) {
@@ -50,24 +49,6 @@
     }
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////	
-   var gotFileEntry = function(fileEntry) { 
-		alert("got image file entry: " + fileEntry.fullPath); 
-		
-		var gotFileSystem = function(fileSystem){ 
-		//	fileEntry.moveTo(fileSystem.root, "pic5.jpg", null, null); 
-			fileEntry.moveTo(fileSystem.root + "/DCMI/Camera/", "pic7.jpg", null, fail_semmove); 
-	   }; 
-	   window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFileSystem, fsFail); 
-	}; 
-
-	function fail_semmove(error) { 
-	alert("nao fez move to"); 
-	}; 	
-
-	function fsFail(error) { 
-	alert("failed with error code: " + error.code); 
-	}; 	
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
 	</script>
     
     <button onclick="getPhoto(pictureSource.CAMERA);">da camera</button><br>
