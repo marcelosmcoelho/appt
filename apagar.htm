@@ -25,6 +25,9 @@ function onDeviceReady() {
 	
 }
 
+var myMedia = null;
+var myMedia2 = null;
+
    // Called when capture operation is finished
     //
     function captureSuccess(mediaFiles) {
@@ -79,17 +82,23 @@ function onDeviceReady() {
     function playAudio() {
 		alert("pp");
 		
-		var myMedia = null;
-        
-		myMedia = new Media("file:/storage/sdcard0/recording-425634038.amr");
+		myMedia = new Media("file:/storage/sdcard0/recording-1402678715.amr");
 		myMedia.play();	
     }
 
-    function playAudio2() {
+    function playAudio3() {
 		alert("pp");
 		
-		var myMedia2 = null;
-        
+		myMedia3 = new Media("file:///storage/sdcard0/recording-1402678715.amr");
+		myMedia3.play();	
+    }
+
+
+
+
+    function playAudio2() {
+		alert("pp");
+		        
 		myMedia2 = new Media("http://www.newdot.com.br/somsa/musicas/1.mp3");
 		myMedia2.play();	
     }
@@ -105,6 +114,7 @@ function onDeviceReady() {
 
 <button onclick="captureAudio()">Capture Audio</button>
 <button onclick="playAudio()">Play Audio</button>
+<button onclick="playAudio3()">Play Audio</button>
 
 mp3
 <button onclick="playAudio2()">play rock.mp3</button>
