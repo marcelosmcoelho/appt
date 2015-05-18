@@ -29,13 +29,15 @@ function onDeviceReady() {
     //
     function captureSuccess(mediaFiles) {
         var i, len;
-        var m_path = mediaFile.fullPath,
-        var m_name = mediaFile.name;
-			alert('m_path:' + m_path)
-			alert('m_name:' + m_name)
-
+        var m_path;
+        var m_name;
+		
         for (i = 0, len = mediaFiles.length; i < len; i += 1) {
            // uploadFile(mediaFiles[i]);
+            m_path = mediaFiles[i].fullPath,
+            m_name = mediaFiles[i].name;
+			alert('m_path:' + m_path)
+			alert('m_name:' + m_name)
 	    }
     }
 
@@ -74,12 +76,22 @@ function onDeviceReady() {
     }
 
 
+    function playAudio() {
+		alert("pp");
+		
+		var myMedia = null;
+        
+		myMedia = new Media("test.mp3");
+		myMedia.play();	
+    }
+
 </script>
 
 <body> 
 
 
 <button onclick="captureAudio()">Capture Audio</button>
+<button onclick="playAudio()">Play Audio</button>
 	
 </body>
 </html>
