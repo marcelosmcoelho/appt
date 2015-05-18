@@ -81,8 +81,22 @@ function onDeviceReady() {
 		
 		var myMedia = null;
         
-		myMedia = new Media("http://www.newdot.com.br/somsa/musicas/1.mp3");
+		myMedia = new Media("file:/storage/sdcard0/recording-425634038.amr");
 		myMedia.play();	
+    }
+
+    function playAudio2() {
+		alert("pp");
+		
+		var myMedia2 = null;
+        
+		myMedia2 = new Media("http://www.newdot.com.br/somsa/musicas/1.mp3");
+		myMedia2.play();	
+    }
+
+    function stopAudio2() {
+		var myMedia2 = null;
+		myMedia2.stop();	
     }
 
 </script>
@@ -92,6 +106,10 @@ function onDeviceReady() {
 
 <button onclick="captureAudio()">Capture Audio</button>
 <button onclick="playAudio()">Play Audio</button>
+
+mp3
+<button onclick="playAudio2()">play rock.mp3</button>
+<button onclick="stopAudio2()">stop rock.mp3</button>
 	
 </body>
 </html>
