@@ -14,80 +14,45 @@
 
 </head>
 
-<body> 
 
 <script type="text/javascript">
-
-var temp2="";
-var temp3="";
 
 
 document.addEventListener("deviceready",onDeviceReady,false);
 
-    // device APIs are available
-    //
 function onDeviceReady() {
 
-
- //  temp2='<img src="431431814683.jpg"  class="popphoto" width="106" height="70" hspace="2" vspace="2"  onClick="teste3()"/>' 
-
-   temp3='<img src="431431814683.jpg"  class="popphoto" width="106" height="70" hspace="2" vspace="2"  onClick="teste3()"/><div id="teste44" style:"display:none"><img class="popphoto" src="31431814683.jpg" style="max-height:512px;"> </div>' 
-
- //  document.getElementById('apague2').innerHTML = "2: " +  temp2 ;								 
-   document.getElementById('apague3').innerHTML =  temp3;								 
-   document.getElementById('teste44').style.display="none";								  
-
-}
-
-
-function teste3() {	
-var ref = window.open('http://apache.org', '_blank', 'location=yes');
-   document.getElementById('teste44').style.display="block";								  
-}
+	// After the successful implementation of the callback method captureAudio
+	function captureSuccess (mediaFiles) {
+	var i, len;
+	for (i = 0, len = mediaFiles.length; i <len; i + = 1) {
+	// Business logic
+	navigator.notification.alert (mediaFiles [i] fullPath + "" + mediaFiles [i] name..);
+	}
+	}
 	
+	// CaptureAudio method is executed after a failed callback
+	function captureError (error) {
+	var msg = 'capture error occurred:' + error.code; navigator.notification.alert (msg, null, 'Uh oh!');
+	}
+	
+	function captureAudio () {
+	// Limit the number of recorded audio
+	navigator.device.capture.captureAudio (captureSuccess, captureError, {limit: 1});
+	}
+
+
+}
+
+
 
 </script>
 
-
- <span id="apague2"></span>
- <span id="apague3"></span>
+<body> 
 
 
+<button onclick="captureAudio();">Capture Audio</button> 
 
-	
-	
-	
-	<div data-role="popup" id="popupLogin" data-overlay-theme="b" data-theme="a" class="ui-corner-all">
-			<form>
-				<div style="padding:10px 20px;">
-				  <h3>Please sign in</h3>
-		          <label for="un" class="ui-hidden-accessible">Username:</label>
-		          <input type="text" name="user" id="un" value="" placeholder="username" data-theme="a" />
-
-		          <label for="pw" class="ui-hidden-accessible">Password:</label>
-		          <input type="password" name="pw" id="pass" value="" placeholder="password" data-theme="a" />
-
-		    	  <button type="submit" data-theme="b">Sign in</button>
-				</div>
-			</form>
-		</div>
-		
-		
-<img src="images/bot_avancar.jpg" width="107" height="50" onClick="teste()">
-<img src="images/bot_avancar.jpg" width="107" height="50" onClick="teste2()">
-<script>
-
-function teste() {	
-	$("#popupLogin").popup('open')
-}
-
-
-function teste2() {	
-	$("#popupLogin").popup('close')
-}
-
-
-</script>
 	
 </body>
 </html>
