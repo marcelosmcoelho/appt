@@ -22,26 +22,48 @@ document.addEventListener("deviceready",onDeviceReady,false);
 
 function onDeviceReady() {
 
-	// After the successful implementation of the callback method captureAudio
-	function captureSuccess (mediaFiles) {
-	var i, len;
-	for (i = 0, len = mediaFiles.length; i <len; i + = 1) {
-	// Business logic
-	navigator.notification.alert (mediaFiles [i] fullPath + "" + mediaFiles [i] name..);
-	}
-	}
-	
-	// CaptureAudio method is executed after a failed callback
-	function captureError (error) {
-	var msg = 'capture error occurred:' + error.code; navigator.notification.alert (msg, null, 'Uh oh!');
-	}
-	
-	function captureAudio () {
-	// Limit the number of recorded audio
-	navigator.device.capture.captureAudio (captureSuccess, captureError, {limit: 1});
-	}
+   // Called when capture operation is finished
+    //
+    function captureSuccess(mediaFiles) {
+        var i, len;
+        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+            uploadFile(mediaFiles[i]);
+        }
+    }
 
+    // Called if something bad happens.
+    //
+    function captureError(error) {
+        var msg = 'An error occurred during capture: ' + error.code;
+        navigator.notification.alert(msg, null, 'Uh oh!');
+    }
 
+    // A button will call this function
+    //
+    function captureAudio() {
+        // Launch device audio recording application,
+        // allowing user to capture up to 2 audio clips
+        navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 2});
+    }
+
+    // Upload files to server
+    function uploadFile(mediaFile) {
+        var ft = new FileTransfer(),
+            path = mediaFile.fullPath,
+            name = mediaFile.name;
+
+        ft.upload(path,
+            "http://my.domain.com/upload.php",
+            function(result) {
+                console.log('Upload success: ' + result.responseCode);
+                console.log(result.bytesSent + ' bytes sent');
+            },
+            function(error) {
+                console.log('Error uploading file ' + path + ': ' + error.code);
+            },
+            { fileName: name });
+    }
+	
 }
 
 
@@ -51,8 +73,7 @@ function onDeviceReady() {
 <body> 
 
 
-<button onclick="captureAudio();">Capture Audio</button> 
-
+<button onclick="captureAudio();">Capture Audio</button>
 	
 </body>
 </html>
