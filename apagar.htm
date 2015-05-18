@@ -22,6 +22,9 @@ document.addEventListener("deviceready",onDeviceReady,false);
 
 function onDeviceReady() {
 
+	
+}
+
    // Called when capture operation is finished
     //
     function captureSuccess(mediaFiles) {
@@ -43,7 +46,8 @@ function onDeviceReady() {
     function captureAudio() {
         // Launch device audio recording application,
         // allowing user to capture up to 2 audio clips
-        navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 2});
+        alert("ww")
+		navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 2});
     }
 
     // Upload files to server
@@ -63,9 +67,6 @@ function onDeviceReady() {
             },
             { fileName: name });
     }
-	
-}
-
 
 
 </script>
@@ -73,7 +74,7 @@ function onDeviceReady() {
 <body> 
 
 
-<button onclick="captureAudio();">Capture Audio</button>
+<button onclick="captureAudio()">Capture Audio</button>
 	
 </body>
 </html>
