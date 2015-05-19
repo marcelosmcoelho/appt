@@ -25,101 +25,49 @@ function onDeviceReady() {
 	
 }
 
-var myMedia = null;
-var myMedia2 = null;
-
-   // Called when capture operation is finished
-    //
-    function captureSuccess(mediaFiles) {
-        var i, len;
-        var m_path;
-        var m_name;
-		
-        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-           // uploadFile(mediaFiles[i]);
-            m_path = mediaFiles[i].fullPath,
-            m_name = mediaFiles[i].name;
-			alert('m_path:' + m_path)
-			alert('m_name:' + m_name)
-	    }
-    }
-
-    // Called if something bad happens.
-    //
-    function captureError(error) {
-        var msg = 'An error occurred during capture: ' + error.code;
-        navigator.notification.alert(msg, null, 'Uh oh!');
-    }
-
-    // A button will call this function
-    //
-    function captureAudio() {
-        // Launch device audio recording application,
-        // allowing user to capture up to 2 audio clips
-        alert("ww")
-		navigator.device.capture.captureAudio(captureSuccess, captureError, {limit: 1});
-    }
-
-    // Upload files to server
-    function uploadFile(mediaFile) {
-        var ft = new FileTransfer(),
-            path = mediaFile.fullPath,
-            name = mediaFile.name;
-
-        ft.upload(path,
-            "http://my.domain.com/upload.php",
-            function(result) {
-                console.log('Upload success: ' + result.responseCode);
-                console.log(result.bytesSent + ' bytes sent');
-            },
-            function(error) {
-                console.log('Error uploading file ' + path + ': ' + error.code);
-            },
-            { fileName: name });
-    }
-
-
-    function playAudio() {
-		alert("pp");
-		
-		myMedia = new Media("file:/storage/sdcard0/recording-1402678715.amr");
-		myMedia.play();	
-    }
-
-    function playAudio3() {
-		alert("pp");
-		
-		myMedia3 = new Media("file:///storage/sdcard0/recording-1402678715.amr");
-		myMedia3.play();	
-    }
-
-
-
-
-    function playAudio2() {
-		alert("pp");
-		        
-		myMedia2 = new Media("http://www.newdot.com.br/somsa/musicas/1.mp3");
-		myMedia2.play();	
-    }
-
-    function stopAudio2() {
-		myMedia2.stop();	
-    }
 
 </script>
 
 <body> 
 
 
-<button onclick="captureAudio()">Capture Audio</button>
-<button onclick="playAudio()">Play Audio</button>
-<button onclick="playAudio3()">Play Audio</button>
+<div style="text-align:center"> 
+  <button onclick="playPause()">Play/Pause</button> 
+  <button onclick="makeBig()">Big</button>
+  <button onclick="makeSmall()">Small</button>
+  <button onclick="makeNormal()">Normal</button>
+  <br> 
+  <video id="video1" width="420">
+    <source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    <source src="http://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+    Your browser does not support HTML5 video.
+  </video>
+</div> 
 
-mp3
-<button onclick="playAudio2()">play rock.mp3</button>
-<button onclick="stopAudio2()">stop rock.mp3</button>
-	
 </body>
 </html>
+
+<script> 
+var myVideo = document.getElementById("video1"); 
+
+function playPause() { 
+    if (myVideo.paused) 
+        myVideo.play(); 
+    else 
+        myVideo.pause(); 
+} 
+
+function makeBig() { 
+    myVideo.width = 560; 
+} 
+
+function makeSmall() { 
+    myVideo.width = 320; 
+} 
+
+function makeNormal() { 
+    myVideo.width = 420; 
+} 
+</script> 
+	
 
