@@ -20,65 +20,67 @@
 
 document.addEventListener("deviceready",onDeviceReady,false);
 
+    // device APIs are available
+    //
 function onDeviceReady() {
 
-	
+
 }
+
+
+        function getImage() {
+            // Retrieve image file location from specified source
+            navigator.camera.getPicture(uploadPhoto, function(message) {
+			alert('get picture failed');
+		},{
+			quality: 50, 
+			destinationType: navigator.camera.DestinationType.FILE_URI,
+			sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+		}
+            );
+ 
+        }
+ 
+        function uploadPhoto(imageURI) {
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+ 
+            var params = new Object();
+            params.value1 = "test";
+            params.value2 = "param";
+ 
+            options.params = params;
+            options.chunkedMode = false;
+ 
+            var ft = new FileTransfer();
+            ft.upload(imageURI, "http://yourdomain.com/upload.php", win, fail, options);
+        }
+ 
+        function win(r) {
+            console.log("Code = " + r.responseCode);
+            console.log("Response = " + r.response);
+            console.log("Sent = " + r.bytesSent);
+            alert(r.response);
+        }
+ 
+        function fail(error) {
+            alert("An error has occurred: Code = " = error.code);
+        }
+
+
 
 
 </script>
 
+
 <body> 
 
-
-<div style="text-align:center"> 
-  <button onclick="playPause()">Play/Pause</button> 
-  <button onclick="makeBig()">Big</button>
-  <button onclick="makeSmall()">Small</button>
-  <button onclick="makeNormal()">Normal</button>
-  <br> 
-  <video id="video1" width="420">
-    <source id='mp4Source' src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-    <source src="http://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
-    Your browser does not support HTML5 video.
-  </video>
-</div> 
+ <button onclick="getImage();">Upload a Photo</button>
+		
+		
 
 </body>
 </html>
-
-<script> 
-var myVideo = document.getElementById("video1"); 
-var mp4Vid = document.getElementById('mp4Source');
-
-function playPause() { 
-    if (myVideo.paused)  {
-        myVideo.play(); 
-    }
-	else {
-        myVideo.pause(); 
-    } 
-} 
-
-function makeBig() { 
-    myVideo.width = 560; 
-} 
-
-function makeSmall() { 
-    myVideo.width = 320; 
-} 
-
-function makeNormal() { 
-    $(mp4Vid).attr('src', "http://video-js.zencoder.com/oceans-clip.mp4");
-
-      myVideo.load();
-      myVideo.play();	
-} 
-
-
-
-
-
-</script> 
-	
 
