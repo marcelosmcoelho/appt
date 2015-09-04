@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
-<link rel="stylesheet" href="css/fontecss.css" />
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/mc.js"/></script>
+<link rel="stylesheet" href="../app1/css/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../app1/css/fontecss.css" />
+<script type="text/javascript" src="../app1/cordova.js"></script>
+<script type="text/javascript" src="../app1/js/mc.js"/></script>
 
-<script src="js/jquery.js"></script>
-<script src="js/jquery.mobile-1.4.5.min.js"></script>
+<script src="../app1/js/jquery.js"></script>
+<script src="../app1/js/jquery.mobile-1.4.5.min.js"></script>
 
 
 </head>
@@ -47,6 +47,9 @@ function onDeviceReady() {
             options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
             options.mimeType="image/jpeg";
  
+ 	document.getElementById('foto_1').src=imageURI;
+	document.getElementById('foto_1').style.display="inline";
+
             var params = new Object();
             params.value1 = "test";
             params.value2 = "param";
@@ -55,13 +58,13 @@ function onDeviceReady() {
             options.chunkedMode = false;
  
             var ft = new FileTransfer();
-            ft.upload(imageURI, "http://yourdomain.com/upload.php", win, fail, options);
+            //ft.upload(imageURI, "http://www.newdot.com.br/phonegap/apagar.asp", win, fail, options);
         }
  
         function win(r) {
-            console.log("Code = " + r.responseCode);
-            console.log("Response = " + r.response);
-            console.log("Sent = " + r.bytesSent);
+            alert("Code = " + r.responseCode);
+            alert("Response = " + r.response);
+            alert("Sent = " + r.bytesSent);
             alert(r.response);
         }
  
@@ -79,7 +82,7 @@ function onDeviceReady() {
 
  <button onclick="getImage();">Upload a Photo</button>
 		
-		
+<img id="foto_1" src=""  width="106" height="70" >
 
 </body>
 </html>
