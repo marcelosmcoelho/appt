@@ -100,7 +100,8 @@ function foto() {
 
 alert("ponto 1")	
 //var imageURI="file:/storage/sdcard0/dcim/camera/1444069452678.jpg"
-var imageURI="file:/storage/sdcard0/dcim/100andro/mov_2383.mp4"
+//var imageURI="file:/storage/sdcard0/dcim/100andro/mov_2383.mp4"
+var imageURI="file:///storage/sdcard0/recording1513746448.amr"
 
 var q_id;
 var all_images;
@@ -113,7 +114,8 @@ var aux_1_status="";
 	options.fileKey="file";
 	options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
 //	options.mimeType="image/jpeg";
-	options.mimeType="audio/mp4";
+//	options.mimeType="video/mp4";
+	options.mimeType="audio/amr";
 
 	var params = new Object();
 	params.value1 = "test";
@@ -124,7 +126,8 @@ var aux_1_status="";
 
 	var ft = new FileTransfer();
 //	ft.upload(imageURI, "http://www.newdot.com.br/phonegap/app_sc/rec_foto_uploaded.php?idpm=" + id_prog_manut + "&mes=" + mes_ev + "&ano=" + ano_ev  + "&idc=" + id_cliente + "&q_k=" + q_k   , win_up, fail_up, options);
-	ft.upload(imageURI, "http://www.newdot.com.br/phonegap/app_sc/rec_video_uploaded.php?idpm=" + id_prog_manut + "&mes=" + mes_ev + "&ano=" + ano_ev  + "&idc=" + id_cliente + "&q_k=" + q_k   , win_up, fail_up, options);
+//	ft.upload(imageURI, "http://www.newdot.com.br/phonegap/app_sc/rec_video_uploaded.php?idpm=" + id_prog_manut + "&mes=" + mes_ev + "&ano=" + ano_ev  + "&idc=" + id_cliente + "&q_k=" + q_k   , win_up, fail_up, options);
+	ft.upload(imageURI, "http://www.newdot.com.br/phonegap/app_sc/rec_audio_uploaded.php?idpm=" + id_prog_manut + "&mes=" + mes_ev + "&ano=" + ano_ev  + "&idc=" + id_cliente + "&q_k=" + q_k   , win_up, fail_up, options);
 
 }
 
