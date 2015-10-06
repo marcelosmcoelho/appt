@@ -3,88 +3,139 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
-<link rel="stylesheet" href="css/fontecss.css" />
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/mc.js"/></script>
+<link rel="stylesheet" href="../app_sc/css/jquery.mobile-1.4.5.min.css" />
+<script type="text/javascript" src="../app_sc/cordova.js"></script>
+<script type="text/javascript" src="../app_sc/js/mc.js"/></script>
 
-<script src="js/jquery.js"></script>
-<script src="js/jquery.mobile-1.4.5.min.js"></script>
+<script src="../app_sc/js/jquery.js"></script>
+<script src="../app_sc/js/jquery.mobile-1.4.5.min.js"></script>
 
 
 </head>
 
+<body>
 
 <script type="text/javascript">
 
 
-document.addEventListener("deviceready",onDeviceReady,false);
 
-    // device APIs are available
-    //
-function onDeviceReady() {
+document.addEventListener("deviceready", onDeviceReady, false);
 
+function onDeviceReady(){
+    
+//if(navigator.connection.type==0 || navigator.connection.type=='none')
+// {
+//	alert('Sem conexão com internet. Favor se conectar.');
+//	window.location.assign("ini.htm");
+// }
+// else
+// {
+
+//    pictureSource=navigator.camera.PictureSourceType;
+//    destinationType=navigator.camera.DestinationType;
+
+	iniciar() ;
+// }
 
 }
 
 
-        function getImage() {
-            // Retrieve image file location from specified source
-            navigator.camera.getPicture(uploadPhoto, function(message) {
-			alert('get picture failed');
-		},{
-			quality: 10, 
-			destinationType: navigator.camera.DestinationType.FILE_URI,
-			sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-		}
-            );
- 
-        }
- 
-        function uploadPhoto(imageURI) {
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
- 
- 	document.getElementById('foto_1').src=imageURI;
-	document.getElementById('foto_1').style.display="inline";
-alert(imageURI)
-            var params = new Object();
-            params.value1 = "test";
-            params.value2 = "param";
- 
-            options.params = params;
-            options.chunkedMode = false;
- 
-            var ft = new FileTransfer();
-            ft.upload(imageURI, "http://www.newdot.com.br/2asolucoes/apagar.php", win, fail, options);
-        }
- 
-         function win(r) {
-            console.log("Code = " + r.responseCode);
-            console.log("Response = " + r.response);
-            console.log("Sent = " + r.bytesSent);
-            alert(r.response);
-        }
- 
-        function fail(error) {
-            alert("An error has occurred: Code = " = error.code);
-        }
- 
+/////////////////////////////
+function iniciar()
+{ 
 
+					var menu_sup=[
+					'<form name="form_sup" action="" method="get">',
+					'<div data-role="header" data-position="fixed" data-theme="a">',
+					'<div class="ui-corner-all custom-corners">',
+					'<div class="ui-bar ui-bar-a" style="height:38;text-align:center">',
+					'<div align="center">',
+					  '<table width="30"  border="0" cellpadding="0" cellspacing="0" >',
+						'<tr>' ,
+						  '<td width="30" ><img src="images/logoSC.gif" width="112" height="35"> </td>',		  
+						'</tr>',
+					  '</table>',
+					'</div>',
+					'</div>',
+					'</div>',
+					'</div>',
+					'</form>'
+					].join('');
+											
+				
+					document.getElementById('menu_opc2').innerHTML = menu_sup;
+						
 
-
+}
 
 </script>
 
-
-<body> 
-1111
- <button onclick="getImage();">Upload a Photo</button>
-		
-<img id="foto_1" src=""  width="106" height="70" >
+    <span id="menu_opc2"></span>
+	
+<img src="../app_sc/images/logosc.gif"  onClick="foto()" width="44" height="44">
 
 </body>
-</html>
+</html> 
 
+<script>
+
+
+
+var qual_id_prog_manut="206"
+var mes_ev="10"
+var ano_ev="2015"
+///////////////////////////////////ini para a camera //////////////////////
+var aux_caminho_imagens=""
+var aux_status_imagens_upl=""
+
+
+
+
+/////// upload imagem  //////////////////////
+function foto() {	
+var imageURI="images/logosc.gif"
+
+var q_id;
+var all_images;
+var all_status_images;
+var taman;
+var aux_1="";
+var aux_1_status="";
+
+	var options = new FileUploadOptions();
+	options.fileKey="file";
+	options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+	options.mimeType="image/jpeg";
+
+	var params = new Object();
+	params.value1 = "test";
+	params.value2 = "param";
+
+	options.params = params;
+	options.chunkedMode = false;
+
+	var ft = new FileTransfer();
+	ft.upload(imageURI, "http://www.newdot.com.br/phonegap/app_sc/rec_foto_uploaded.php?idpm=" + id_prog_manut + "&mes=" + mes_ev + "&ano=" + ano_ev  + "&idc=" + id_cliente + "&q_k=" + q_k   , win_up, fail_up, options);
+
+}
+
+ function win_up(r) {
+//	alert(r.response);
+} 
+
+function fail_up(error) {
+	alert("An error has occurred: Code = " + error.code);
+}
+
+
+////////// fim upload imagem /////////
+
+///////////////////////////////////////fim para a camera //////////////////////
+
+
+
+function reload_page() {
+window.location.assign("even.htm?ipm=" + id_prog_manut + "&mes_ev=" + mes_ev + "&ano_ev=" + ano_ev )
+}
+
+</script>
