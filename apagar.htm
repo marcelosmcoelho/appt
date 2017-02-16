@@ -10,7 +10,6 @@
 <script src="js/jquery.js"></script>
 <script src="js/jquery.mobile-1.4.5.min.js"></script>
 
-
 </head>
 
 <body>
@@ -18,25 +17,21 @@
 <script type="text/javascript">
 
 
-
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady(){
     
-//if(navigator.connection.type==0 || navigator.connection.type=='none')
-// {
-//	alert('Sem conexão com internet. Favor se conectar.');
-//	window.location.assign("ini.htm");
-// }
-// else
-// {
-
-//    pictureSource=navigator.camera.PictureSourceType;
-//    destinationType=navigator.camera.DestinationType;
-
+if(navigator.connection.type==0 || navigator.connection.type=='none')
+ {
+	alert('Sem conexão com internet. Favor se conectar.');
+	window.location.assign("ini.htm");
+ }
+ else
+ {
+	alert('conexão ok');
 	iniciar() ;
-// }
-
+ }
+ 
 }
 
 
@@ -44,110 +39,30 @@ function onDeviceReady(){
 function iniciar()
 { 
 
-					var menu_sup=[
-					'<form name="form_sup" action="" method="get">',
-					'<div data-role="header" data-position="fixed" data-theme="a">',
-					'<div class="ui-corner-all custom-corners">',
-					'<div class="ui-bar ui-bar-a" style="height:38;text-align:center">',
-					'<div align="center">',
-					  '<table width="30"  border="0" cellpadding="0" cellspacing="0" >',
-						'<tr>' ,
-						  '<td width="30" ><img src="images/logoSC.gif" width="112" height="35"> </td>',		  
-						'</tr>',
-					  '</table>',
-					'</div>',
-					'</div>',
-					'</div>',
-					'</div>',
-					'</form>'
-					].join('');
-											
-				
-					document.getElementById('menu_opc2').innerHTML = menu_sup;
-						
+    var ajax = new XMLHttpRequest();
+    ajax.open("GET","http://www.fidigital.com.br/phonegap/app_sc/consult_emp.asp?l=masmac@ig.com.br&s=msenha&t=1",true);
+//    ajax.open("GET","http://www.uol.com.br",true);
 
+    ajax.onreadystatechange=function(){
+			    alert("readyState:" + ajax.readyState); 
+       
+	    if(ajax.readyState == 4) {//Request complete !!!!
+			    alert("status:" + ajax.status); 
+            if (ajax.status == 200 || ajax.status == 0) { // OK response
+			    alert("OK 2"); 
+			
+			}
+			else {
+			    alert("Problemas com sua conexao internet. Erro: 0149"); 
+			}
+        }
+	}
+    ajax.send();
 }
 
-</script>
 
-    <span id="menu_opc2"></span>
-	
-<img src="images/logoSC.gif"  onClick="foto()" width="44" height="44"><br><br>
-<img src="file:/storage/sdcard0/dcim/camera/1444069452678.jpg"   width="44" height="44">
+
+</script>
 
 </body>
-</html> 
-
-<script>
-
-
-
-var id_prog_manut="206";
-var mes_ev="10";
-var ano_ev="2015";
-var id_cliente="1";
-var q_k="7";
-
-///////////////////////////////////ini para a camera //////////////////////
-var aux_caminho_imagens=""
-var aux_status_imagens_upl=""
-
-
-
-
-/////// upload imagem  //////////////////////
-function foto() {
-
-alert("ponto 1")	
-//var imageURI="file:/storage/sdcard0/dcim/camera/1444069452678.jpg"
-//var imageURI="file:/storage/sdcard0/dcim/100andro/mov_2383.mp4"
-var imageURI="file:///storage/sdcard0/recording1513746448.amr"
-
-var q_id;
-var all_images;
-var all_status_images;
-var taman;
-var aux_1="";
-var aux_1_status="";
-
-	var options = new FileUploadOptions();
-	options.fileKey="file";
-	options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-//	options.mimeType="image/jpeg";
-//	options.mimeType="video/mp4";
-	options.mimeType="audio/amr";
-
-	var params = new Object();
-	params.value1 = "test";
-	params.value2 = "param";
-
-	options.params = params;
-	options.chunkedMode = false;
-
-	var ft = new FileTransfer();
-//	ft.upload(imageURI, "http://www.newdot.com.br/phonegap/app_sc/rec_foto_uploaded.php?idpm=" + id_prog_manut + "&mes=" + mes_ev + "&ano=" + ano_ev  + "&idc=" + id_cliente + "&q_k=" + q_k   , win_up, fail_up, options);
-//	ft.upload(imageURI, "http://www.newdot.com.br/phonegap/app_sc/rec_video_uploaded.php?idpm=" + id_prog_manut + "&mes=" + mes_ev + "&ano=" + ano_ev  + "&idc=" + id_cliente + "&q_k=" + q_k   , win_up, fail_up, options);
-	ft.upload(imageURI, "http://www.newdot.com.br/phonegap/app_sc/rec_audio_uploaded.php?idpm=" + id_prog_manut + "&mes=" + mes_ev + "&ano=" + ano_ev  + "&idc=" + id_cliente + "&q_k=" + q_k   , win_up, fail_up, options);
-
-}
-
- function win_up(r) {
-//	alert(r.response);
-} 
-
-function fail_up(error) {
-	alert("An error has occurred: Code = " + error.code);
-}
-
-
-////////// fim upload imagem /////////
-
-///////////////////////////////////////fim para a camera //////////////////////
-
-
-
-function reload_page() {
-window.location.assign("even.htm?ipm=" + id_prog_manut + "&mes_ev=" + mes_ev + "&ano_ev=" + ano_ev )
-}
-
-</script>
+</html>
