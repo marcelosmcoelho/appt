@@ -4,6 +4,10 @@
 		<title>TESTE 01</title>
 		<script>
 			//window.location='apagar.htm';
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+    if (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE))
+    { WebView.setWebContentsDebuggingEnabled(false); }  
+      }
 		</script>
 	<body>		
 	</body>
