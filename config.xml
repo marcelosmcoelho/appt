@@ -20,6 +20,9 @@
 		<string>3</string>
 	</gap:config-file>
 
+	<config-file platform="android" parent="/manifest" mode="merge">
+		<application android:debuggable="false"/>
+	</config-file>
     <!--
         Enable individual API permissions by defining each here.
         The 'device' permission is required for the 'deviceready' event.
