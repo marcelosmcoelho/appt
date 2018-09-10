@@ -4,13 +4,13 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
  		xmlns:android   = "http://schemas.android.com/apk/res/android"
-        id        = "br.com.sigmacivil.sc"
+        id        = "br.com.teste.sc"
         version   = "1.2.2">
 
-    <name>SigmaCivil</name>
+    <name>App Teste</name>
 
     <description>
-        Sigmacivil
+        App Teste
     </description>
 
     <author href="http://www.sigmacivil.com.br" email="ajuda@personalway.com.br">
