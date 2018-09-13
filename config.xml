@@ -23,7 +23,6 @@
 
 	<gap:config-file platform="android" parent="/manifest" mode="merge">
 		 <application android:debuggable="false"/>
-		 <uses-permission android:name="android.permission.RECORD_AUDIO" />
 	</gap:config-file>
 	
     <!--
