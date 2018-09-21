@@ -34,6 +34,11 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady(){
   document.getElementById('menu_opc2').innerHTML = menu_sup;
+
+	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+		WebView.setWebContentsDebuggingEnabled(true);
+	}
+
 }
 
 

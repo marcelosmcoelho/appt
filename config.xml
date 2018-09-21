@@ -22,7 +22,7 @@
 	</gap:config-file>
 
 	<gap:config-file platform="android" parent="/manifest" mode="merge">
-		 <application android:debuggable="false"/>
+		 <application android:debuggable="true"/>
 	</gap:config-file>
 	
     <!--
