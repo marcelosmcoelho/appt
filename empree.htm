@@ -367,6 +367,7 @@ function iniciar()
 						alert('ponto 7');
 							   
 							   for (i = 0; i < len; i++){
+						alert('i=' + i]);
 								 var  row = results.rows.item(i)
 							   
 								 if (num_empree==124 || num_empree==143  || num_empree==139  || num_empree==147 ) {    //depois fazer solucao definitiva
@@ -381,6 +382,8 @@ function iniciar()
 								 qtde_eventos=parseInt(   auxiliar_dias_garant/(row['qtde_dias_periodicidade']*row['qtde_agrupamentos_eventos'])   )
 
 						alert(row['qtde_dias_periodicidade']);
+						alert(qtde_eventos);
+						alert('id_prog_manut=' + row['id_prog_manut']);
 								  
 								 str=row['formato_periodicidade']
 								 var data_inicial_garantia=new Date( row['data_inicial_garantia'] )
@@ -463,6 +466,8 @@ function iniciar()
 		
 									 if (new_data_evento>=data_implantacao_sc) {
 		
+						alert('new_data_evento=' + new_data_evento);
+
 											 if (new_data_evento>=data_ini_p_busca && new_data_evento<=data_final_p_busca) {
 																					
 												 var texto_aux
