@@ -382,14 +382,17 @@ function iniciar()
 								 qtde_eventos=parseInt(   auxiliar_dias_garant/(row['qtde_dias_periodicidade']*row['qtde_agrupamentos_eventos'])   )
 
 						alert(row['qtde_dias_periodicidade']);
-						alert(qtde_eventos);
+						alert('qtde_eventos' + qtde_eventos);
 						alert('id_prog_manut=' + row['id_prog_manut']);
 								  
 								 str=row['formato_periodicidade']
+						alert('formato_periodicidade=' + row['formato_periodicidade']);
 								 var data_inicial_garantia=new Date( row['data_inicial_garantia'] )
+						alert('data_inicial_garantia=' + row['data_inicial_garantia']);
 								 str2=str.split("_")
 								 
 								 for (j = 1; j <= qtde_eventos; j++){
+						alert('j=' + j);
 									 compl2=j*str2[0]*row['qtde_agrupamentos_eventos']  
 									 
 									 var new_data_evento=new Date(data_inicial_garantia)
