@@ -225,11 +225,16 @@ function onDeviceReady(){
 			ajax.onreadystatechange=function(){
 				if(ajax.readyState == 4) {//Request complete !!
 					if (ajax.status == 200 || ajax.status == 0) { // OK response
+						alert('ponto 3');
 		
 						status_sync_serv= ajax.responseText;
 					
+						alert(status_sync_serv);
+
 						if (status_sync_serv!="nada") {		
 					
+						alert('ponto 4');
+
 							var db = window.openDatabase("DB_SigmaCivil", "1.0", "DB_SigmaCivil", 200000); //will create database Dummy_DB or open it
 							db.transaction(function (tx) {
 								  tx.executeSql('SELECT * FROM mtab_empree'  , [], function (tx, results) {
@@ -258,6 +263,8 @@ function onDeviceReady(){
 						}
 						
 						else {
+												alert('ponto 5');
+
 						    iniciar() ;
 						}
 	
@@ -351,6 +358,8 @@ function iniciar()
 					   
 							   var temp1=""
 							   var aux1=""
+
+						alert('ponto 7');
 							   
 							   for (i = 0; i < len; i++){
 								 var  row = results.rows.item(i)
@@ -361,6 +370,8 @@ function iniciar()
 								 else {
 									 auxiliar_dias_garant=1825;
 								 }
+
+						alert(auxiliar_dias_garant);
 
 								 qtde_eventos=parseInt(   auxiliar_dias_garant/(row['qtde_dias_periodicidade']*row['qtde_agrupamentos_eventos'])   )
 								  
