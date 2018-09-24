@@ -48,9 +48,11 @@ function iniciar()
     ajax.onreadystatechange=function(){
         if(ajax.readyState == 4) {//Request complete !!
             if (ajax.status == 200 || ajax.status == 0) { // OK response
+						alert('ponto2');
 
 				var resposta_total= ajax.responseText;
 				var jsontext=resposta_total.split("*")
+						alert(resposta_total);
 				
 				var getLogin = JSON.parse(jsontext[0]);
                 logou=getLogin.logou;
@@ -94,6 +96,7 @@ function iniciar()
 						tx.executeSql('Delete FROM mtab_prog_manut_evento');
 					
 					    go_to()
+						alert('ponto1');
 					});
 					///////////////  FIM tabela programa_manutenção //////////////	        
 					
@@ -115,7 +118,7 @@ function iniciar()
 
 
 function go_to(){
-  window.location.assign("empree.htm?e=" + num_empree);
+//  window.location.assign("empree.htm?e=" + num_empree);
 }
 
 </script>
