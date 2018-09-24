@@ -244,6 +244,7 @@ function onDeviceReady(){
 								 						
 									if (status_sync_serv==status_sync) {		
 										iniciar() ;
+						alert('ponto 8');
 									}
 									else {
 		
@@ -341,6 +342,10 @@ function iniciar()
 						 var  row = results.rows.item(i)
 				         data_implantacao_sc=new Date(row['data_implantacao_sc'])
 						 nome_empree=row['nome_empree']
+
+						alert(data_implantacao_sc);
+						alert(nome_empree);
+
 			             document.getElementById('nome_emp').innerHTML = nome_empree;
 					   }
 
@@ -374,6 +379,8 @@ function iniciar()
 						alert(auxiliar_dias_garant);
 
 								 qtde_eventos=parseInt(   auxiliar_dias_garant/(row['qtde_dias_periodicidade']*row['qtde_agrupamentos_eventos'])   )
+
+						alert(row['qtde_dias_periodicidade']);
 								  
 								 str=row['formato_periodicidade']
 								 var data_inicial_garantia=new Date( row['data_inicial_garantia'] )
