@@ -394,20 +394,27 @@ function iniciar()
 								 for (j = 1; j <= qtde_eventos; j++){
 						alert('j=' + j);
 									 compl2=j*str2[0]*row['qtde_agrupamentos_eventos']  
+						alert('compl2=' + compl2);
+						alert('qtde_agrupamentos_eventos=' + row['qtde_agrupamentos_eventos']);
 									 
 									 var new_data_evento=new Date(data_inicial_garantia)
+						alert('new_data_evento=' + new_data_evento);
 									
+						alert('str2[1]=' + str2[1]);
 									 if (str2[1]=="d") {
 									    new_data_evento.setDate(new_data_evento.getDate()+compl2);
 									 }
 									 if (str2[1]=="m") {
 									 
+						alert('ponto 10');
 										  /////para soma em MESES
 										  var inteiro_ano=compl2/12;
 										  inteiro_ano=Math.trunc(inteiro_ano);								  
 										  var aux_mes=compl2-(12*inteiro_ano);								  
 										  aux_mes=(new_data_evento.getMonth()+aux_mes)
 										
+						alert('aux_mes=' + aux_mes);
+
 										  var soma_ano
 										  var aux_dia
 											
@@ -420,6 +427,8 @@ function iniciar()
 											 soma_ano=0;
 										  }
 										  
+						alert('aux_mes=' + aux_mes);
+
 										  var aux_ano=inteiro_ano+soma_ano
 										  aux_ano=(new_data_evento.getFullYear()+aux_ano)
 																							  
@@ -455,6 +464,7 @@ function iniciar()
 										
 										 } else {
 											aux_dia=new_data_evento.getDate();
+						alert('aux_dia=' + aux_dia);
 										 }		
 										
 										 new_data_evento=new Date(aux_ano,aux_mes,aux_dia)
