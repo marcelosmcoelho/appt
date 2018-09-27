@@ -17,6 +17,9 @@
 
 <script type="text/javascript">
 
+window.onerror = function (errorMsg, url, lineNumber) {
+    alert('Erro: ' + errorMsg + '\nArquivo: ' + url + '\nLinha: ' + lineNumber);
+}
 
 var num_empree = getquerystring("e");
 
