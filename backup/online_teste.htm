@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="cordova.js"></script>
+    <title>Online teste</title>
+    <script>
+
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+
+            // var $btnCamera = document.querySelector('.btn-camera')
+            // $btnCamera.addEventListener('click', function () {
+            // 	var ref = cordova.InAppBrowser.open('apagar.htm', '_blank', 'location=yes')
+            // 	ref.addEventListener('loadstart', function () {
+            // 		alert('evento acionado')
+            // 	})
+            // })
+
+            window.onerror = function (message, url, lineNumber) {
+                alert("Error: " + message + " in " + url + " at line " + lineNumber);
+            }
+
+            iniciar()
+        }
+
+        function iniciar() {
+            // var menu_sup = [
+            //     '<form name="form_sup" action="" method="get">',
+            //     '<div data-role="header" data-position="fixed" data-theme="a">',
+            //     '<div class="ui-corner-all custom-corners">',
+            //     '<div class="ui-bar ui-bar-a" style="height:38;text-align:center">',
+            //     '<div align="center">',
+            //     '<table width="30"  border="0" cellpadding="0" cellspacing="0" >',
+            //     '<tr>',
+            //     '<td width="30" ><img src="images/logoSC.gif" width="112" height="35"> </td>',
+            //     '</tr>',
+            //     '</table>',
+            //     '</div>',
+            //     '</div>',
+            //     '</div>',
+            //     '</div>',
+            //     '</form>'
+            // ].join('');
+            // document.getElementById('menu_opc2').innerHTML = menu_sup;
+
+            // document.getElementById('campo1').onclick = abreNavegador('http://www.uol.com.br')
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <button onclick="abreNavegador('http://www.newdot.com.br/phonegap/even_oonline.htm?ipm=1043&dia_ev=26&mes_ev=10&ano_ev=2019&x=5445444')" id="campo1">Clique aqui</button>
+    <!-- <iframe src="even_oonline.htm?ipm=1043&dia_ev=26&mes_ev=10&ano_ev=2019" width="100%" height="100%"></iframe> -->
+
+    <!-- <iframe src="https://mobilehtml5.org/ts/?id=23" width="100%" height="100%"></iframe> -->
+
+</body>
+
+</html>
+
+<script>
+
+    function abreNavegador(url) {
+        // alert('tentando abrir a url ' + url);
+        window.open = cordova.InAppBrowser.open(url, '_self', 'location=yes');
+        // window.open('https://google.com', '_self');
+        // window.open('https://google.com', '_self');
+    }
+
+</script>

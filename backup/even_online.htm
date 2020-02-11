@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="css/custom-mobile.css" />
+    <link rel="stylesheet" href="css/custom-even.css" />
+    <script src="cordova.js"></script>
+    <script src="js/mc.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <!-- <script src="js/index.js"></script> -->
+    <script src="https://kit.fontawesome.com/c202879e33.js" crossorigin="anonymous"></script>
+    <title>Even_onlline</title>
+
+
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        window.onerror = function (message, url, lineNumber) {
+            alert("Error: " + message + " in " + url + " at line " + lineNumber);
+        }
+
+    </script>
+
+    <script type="text/javascript">
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            var pictureSource = navigator.camera.PictureSourceType;
+            var destinationType = navigator.camera.DestinationType;
+            iniciar();
+            // console.log(navigator.camera);
+        }
+    </script>
+
+    <div class="screen-over is-disabled">
+        <div class="screen-over-content ui-responsive">
+            <i class="fa fa-times"></i>
+            <div class="title-content">
+                <span class="size-14">Lorem ipsum dolor, sit amet consectetur</span>
+                <span class="size-14" style="display: block;">Lorem ipsum dolor, sit amet consectetur</span>
+            </div>
+            <div class="image-content">
+                <img src="imagens/disabled.jpg" alt="" />
+            </div>
+            <div class="title-content" style="margin-top: 15px;">
+                <span class="size-14">Lorem ipsum dolor, sit amet consectetur</span>
+            </div>
+        </div>
+    </div>
+    <div class="title">
+        <a href="empree_online.htm" target="_self">
+            <h4>Green Design</h4>
+        </a>
+    </div>
+
+    <ul class="list-content" data-mini="true" data-role="listview" data-filter="true"
+        data-filter-placeholder="Buscar..." data-inset="true">
+        <li class="shadow-box">
+            <!-- <a href="#"> -->
+            <div class="text-center-title">
+                <font size='4' face='Arial'> Instalações hidráulicas - água potável </font>
+            </div>
+            <div class="text-center-paragraph">
+                <p class="text-size-content" size='2' face='Arial' color='#0000FF'> Verificar a
+                    estanqueidade Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos maiores nesciunt facere
+                    aut mollitia provident qui sunt, dolorem beatae? Rerum eum pariatur voluptatibus. Aperiam ratione
+                    laboriosam laudantium excepturi, dolores adipisci.
+                </p>
+            </div>
+            <!--a/-->
+            <table>
+                <hr class="line-color">
+            </table>
+            <table>
+                <div class="ui-grid ui-responsive">
+                    <div class="ui-block-a ui-grid-full">
+                        <table data-role="table" id="table-column-toggle" data-mode=""
+                            class="ui-responsive table-stroke">
+                            <tbody>
+                                <tr>
+                                    <th style="padding: 0">
+                                        <p
+                                            style="line-height: normal; margin-top: 2px; margin-top: 13px; text-align: center">
+                                            Realização da
+                                            manuntenção</p>
+                                    </th>
+                                    <th style="padding: 0">
+                                        <div class="input-responsive">
+                                            <input class="date-size" type="date" name="date" id="date" value="">
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div><!-- /grid-a -->
+            </table>
+            <table>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a custo-estimado">
+                        <input class="custo-estimado-input" type="number" name="text-basic" id="text-basic"
+                            data-placeholder="true" placeholder="Custo estimado" value="" />
+                    </div>
+                    <div class="ui-block-b custo-real">
+                        <input class="custo-real-input" type="number" name="text-basic" id="text-basic"
+                            data-placeholder="true" placeholder="Custo real" value="" />
+                    </div>
+                </div><!-- /grid-a -->
+            </table>
+            <table>
+                <div class="ui-grid ui-responsive">
+                    <div class="ui-block-a ui-grid-full">
+                        <table data-role="table" id="table-column-toggle" class="ui-responsive table-stroke">
+                            <tbody>
+                                <select name="select-native-2" id="select-native-2" data-mini="true">
+                                    <option value="valor1">Fornecedor</option>
+                                </select>
+                                <i class="far fa-question-circle circle-question"></i>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <table>
+                    <hr class="line-color">
+                </table>
+                <table>
+                    <div class="ui-grid ui-responsive">
+                        <div class="ui-block-a ui-grid-full">
+                            <table data-role="table" id="table-column-toggle" data-mode=""
+                                class="ui-responsive table-stroke">
+                                <!-- AQUI A GRID DE FOTOS/ARQUIVOS -->
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <a href="#">
+                                                <i id="campo2" class="fas fa-camera fa-2x top-9px"></i>
+                                            </a>
+                                        </th>
+                                        <th>
+                                            <!-- <input type="text" name="text-basic" id="text-basic"
+                                                style="border: 1px solid #515151" value="" disabled /> -->
+                                            <input type="file" id="campo1" />
+                                        </th>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <a href="#">
+                                                <i class="fas fa-volume-up fa-2x top-9px"></i>
+                                            </a>
+                                        </th>
+                                        <th>
+                                            <input type="text" name="text-basic" id="text-basic"
+                                                style="border: 1px solid #515151" value="" disabled />
+                                        </th>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <a href="#">
+                                                <i class="fas fa-video fa-2x top-9px"></i>
+                                            </a>
+                                        </th>
+                                        <th>
+                                            <input type="text" name="text-basic" id="text-basic"
+                                                style="border: 1px solid #515151" value="" disabled />
+                                        </th>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <a href="#">
+                                                <i class="fas fa-file-alt fa-2x top-9px"></i>
+                                            </a>
+                                        </th>
+                                        <th>
+                                            <input type="file" />
+                                        </th>
+                                    </tr>
+                                </tbody>
+                                <!-- AQUI ACABA A GRID DE DOCUMENTOS/ARQUIVOS -->
+                            </table>
+                        </div>
+                    </div><!-- /grid-a -->
+                </table>
+                <table>
+                    <div class="ui-grid ui-responsive">
+                        <div class="ui-block-a ui-grid-full">
+                            <table data-role="table" id="table-column-toggle" class="ui-responsive table-stroke">
+                                <tbody>
+                                    <label class="label-center" for="textarea-1">Observações:</label>
+                                    <textarea class="size-14" name="textarea-1" id="textarea-1" data-placeholder="true"
+                                        placeholder="Condomínio"></textarea>
+                                    <label class="input-check">
+                                                 <input type="checkbox" name="checkbox-0 ">Check me
+                                    </label>
+                                </tbody>
+                                <tbody>
+                                    <textarea class="size-14" name="textarea-1" id="textarea-1" data-placeholder="true"
+                                        placeholder="Construtora"></textarea>
+                                    <label class="input-check">
+                                                <input type="checkbox" name="checkbox-0 ">Check me
+                                    </label>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </table>
+                <table>
+                    <fieldset class="ui-grid-a">
+                        <div class="ui-block-a ui-responsive">
+                            <button type="button" class="ui-btn block btn-radius">Voltar</button>
+                        </div>
+                        <div class="ui-block-b ui-responsive">
+                            <button type="button" class="ui-btn block btn-radius">Salvar</button>
+                        </div>
+                    </fieldset>
+                </table>
+            </table>
+        </li>
+    </ul>
+
+    <script src="js/jquery2.js"></script>
+    <script>
+
+        function iniciar() {
+
+            document.getElementById('campo1').onclick = getPhoto(pictureSource.CAMERA)
+            document.getElementById('campo2').onclick = getPhoto(pictureSource.CAMERA)
+            alert("ponto0");
+
+
+            $(document).ready(function () {
+                $('.circle-question').mouseover(function () {
+                    $('.screen-over').fadeIn(400)
+                })
+
+                $('.fa-times').click(function () {
+                    $('.screen-over').hide()
+                })
+            })
+
+            function fteste() {
+              alert("ponto 2");
+            }    
+            
+            function getPhoto(source) {
+                alert("ponto1");
+                var r = confirm("Para tirar uma foto com a CÂMERA selecione OK. Para usar sua galeria de imagens selecione CANCELAR");
+                if (r == true) {
+                    source = pictureSource.CAMERA;
+                } else {
+                    source = pictureSource.PHOTOLIBRARY;
+                }
+
+                navigator.camera.getPicture(onPhotoURISuccess, onFail, {
+                    quality: 50,
+                    destinationType: destinationType.FILE_URI,
+                    encodingType: Camera.EncodingType.JPEG,
+                    popoverOptions: CameraPopoverOptions,
+                    // saveToPhotoAlbum: true,
+                    sourceType: source
+                });
+
+            }
+
+            function onFail(message) {
+                alert('Failed because: ' + message);
+            }
+
+            function onPhotoURISuccess(imageURI) {
+
+                alert('ok');
+
+            }
+
+            // try{
+            //     getPhoto() 
+            // } catch(err) {
+            //     document.write(err)
+            // }
+        }
+
+    </script>
+</body>
+
+</html>
