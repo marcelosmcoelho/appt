@@ -68,8 +68,8 @@
 						var jsontext = resposta_total.split("*")
 
 						var getLogin = JSON.parse(jsontext[0]);
-						alert('getLogin: ' + getLogin)
 						logou = getLogin.logou;
+						alert('logou: ' + getLogin.logou)
 						qual_id_cliente = getLogin.id_cliente;
 						num_empree = getLogin.id_empree;
 						nome_empree = getLogin.nome_empree;
