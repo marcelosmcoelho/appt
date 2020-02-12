@@ -45,18 +45,18 @@
 
 					
 					var j3;
-					alert('j3: ' + j3)
+					// alert('j3: ' + j3)
 					for (j3 = 0; j3 < len3; j3++) {
-						alert('j3: ' + j3)
+						// alert('j3: ' + j3)
 						var row3 = results.rows.item(j3);
 						var id_cliente = row3['id_cliente'];
 						var e_construtora = row3['e_construtora'];
 						var text1 = row3['text1'];
 						var text2 = row3['text2'];
-						alert('id_cliente: ' + id_cliente)
-						alert('e_construtora: ' + e_construtora)
-						alert('text1: ' + text1)
-						alert('text2: ' + text2)
+						// alert('id_cliente: ' + id_cliente)
+						// alert('e_construtora: ' + e_construtora)
+						// alert('text1: ' + text1)
+						// alert('text2: ' + text2)
 						
 					}//tirar
 
@@ -75,7 +75,7 @@
 						tx.executeSql('SELECT * FROM mtab_empree', [], function (tx, results) {
 							var len2 = results.rows.length;     //verifica se tem algum comprador (evitar o caso de nao ter escolhido empreendimento e saido antes)
 
-							alert("len1, len2 " + len1 + ',' + len2)
+							// alert("len1, len2 " + len1 + ',' + len2)
 							if (len1 > 0 && len2 > 0) {
 								///////////////  FIM tabela empreendimento //////////////	        
 								db.transaction(function (tx) {
@@ -119,13 +119,12 @@
 		}
 
 		function cliente_nao_existe() {
-			alert('cliente nao existe')
-
+			// alert('cliente nao existe')
 			window.location.assign("login.htm");
 		}
 
 		function cliente_existe(parametro1) {
-			alert('cliente existe')
+			// alert('cliente existe')
 
 			if (tem_conexao()) {
 

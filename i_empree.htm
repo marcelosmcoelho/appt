@@ -22,12 +22,11 @@
 		var login = getquerystring("login");
 		var senha = getquerystring("senha");
 
-		alert('login: ' + login)
-		alert('senha: ' + senha)
+		// alert('login: ' + login)
+		// alert('senha: ' + senha)
 
 		var num_empree;
 		var logou;
-
 
 		document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -43,33 +42,25 @@
 
 		}
 
-		// setTimeout(() => {
-		// 	try {
-		// 		iniciar()
-		// 	} catch(err) {
-		// 		window.location.assign("login.htm")
-		// 	}
-		// }, 3000)
-
 		/////////////////////////////
 		function iniciar() {
 
-			alert('ponto1')
+			// alert('ponto1')
 			var ajax = new XMLHttpRequest();
 			ajax.open("GET", "https://www.sigmacivil.com.br/app_sc/consult_emp.asp?l=" + login + "&s=" + senha + "&versao=2.0&t=" + Math.random(), true);
-			alert('ponto2')
+			// alert('ponto2')
 			ajax.onreadystatechange = function () {
-				alert('ponto3')
+				// alert('ponto3')
 				if (ajax.readyState == 4) {//Request complete !!
-					alert('ponto4')
+					// alert('ponto4')
 					if (ajax.status == 200 || ajax.status == 0) { // OK response
-						alert('ponto5')
+						// alert('ponto5')
 						var resposta_total = ajax.responseText;
 						var jsontext = resposta_total.split("*")
 
 						var getLogin = JSON.parse(jsontext[0]);
 						logou = getLogin.logou;
-						alert('logou: ' + getLogin.logou)
+						// alert('logou: ' + getLogin.logou)
 						qual_id_cliente = getLogin.id_cliente;
 						num_empree = getLogin.id_empree;
 						nome_empree = getLogin.nome_empree;
@@ -77,7 +68,7 @@
 						data_implantacao_sc = getLogin.data_implantacao_sc;
 						status_sync = getLogin.status_sync;
 
-						alert('logou: ' + logou)
+						// alert('logou: ' + logou)
 						if (logou == "S") {
 
 
@@ -94,19 +85,19 @@
 									var len4 = results.rows.length;
 
 									var j4;
-									alert('j4: ' + j4)
-									alert('len4: ' + len4)
+									// alert('j4: ' + j4)
+									// alert('len4: ' + len4)
 									for (j4 = 0; j4 < len4; j4++) {
-										alert('j4: ' + j4)
+										// alert('j4: ' + j4)
 										var row3 = results.rows.item(j4);
 										var id_cliente = row3['id_cliente'];
 										var e_construtora = row3['e_construtora'];
 										var text1 = row3['text1'];
 										var text2 = row3['text2'];
-										alert('id_cliente: ' + id_cliente)
-										alert('e_construtora: ' + e_construtora)
-										alert('text1: ' + text1)
-										alert('text2: ' + text2)
+										// alert('id_cliente: ' + id_cliente)
+										// alert('e_construtora: ' + e_construtora)
+										// alert('text1: ' + text1)
+										// alert('text2: ' + text2)
 
 									}//tirar
 
@@ -118,19 +109,19 @@
 										var len5 = results.rows.length;
 
 										var j5;
-										alert('j5: ' + j5)
-										alert('len5: ' + len5)
+										// alert('j5: ' + j5)
+										// alert('len5: ' + len5)
 										for (j5 = 0; j5 < len5; j5++) {
-											alert('j5: ' + j5)
+											// alert('j5: ' + j5)
 											var row3 = results.rows.item(j5);
 											var id_cliente = row3['id_cliente'];
 											var e_construtora = row3['e_construtora'];
 											var text1 = row3['text1'];
 											var text2 = row3['text2'];
-											alert('id_cliente: ' + id_cliente)
-											alert('e_construtora: ' + e_construtora)
-											alert('text1: ' + text1)
-											alert('text2: ' + text2)
+											// alert('id_cliente: ' + id_cliente)
+											// alert('e_construtora: ' + e_construtora)
+											// alert('text1: ' + text1)
+											// alert('text2: ' + text2)
 
 										}//tirar
 

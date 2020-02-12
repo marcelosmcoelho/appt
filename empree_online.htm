@@ -352,14 +352,14 @@
             var fim_lista = "</ul>"
 
             // carregar dados das manutenções do servidor 
-            alert('etapa 0')
+            // alert('etapa 0')
             var ajax = new XMLHttpRequest();
             ajax.open("GET", "https://www.sigmacivil.com.br/app_sc/consult_emp_online.asp?l=" + login + "&s=" + senha + "&versao=2.0&t=" + Math.random(), true);
-            alert('etapa 1')
+            // alert('etapa 1')
             ajax.onreadystatechange = function () {
                 if (ajax.readyState == 4) { //Request complete !!
                     if (ajax.status == 200 || ajax.status == 0) { // OK response
-                        alert('etapa 2')
+                        // alert('etapa 2')
 
                         var resposta_total = ajax.responseText;
                         var jsontext = resposta_total.split("*")
@@ -387,7 +387,7 @@
                             if (bloqueio == "1") {
                                 alert(q_mensagem)
                             }
-                            alert('logou etapa: ' + logou)
+                            // alert('logou etapa: ' + logou)
                             if (logou == "S") {
 
                                 var getEmpree = jsontext[1];
