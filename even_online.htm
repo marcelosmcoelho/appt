@@ -981,7 +981,6 @@
 
             var q_k;
             var options = new FileUploadOptions();
-			var url = "https://www.sigmacivil.com.br/app_sc/rec_foto_uploaded.php?idpm=" + id_prog_manut + "&dia=" + dia_ev + "&mes=" + mes_ev + "&ano=" + ano_ev + "&versao=2.0&econst=" + e_construtora + "&idc=" + id_cliente + "&q_k=" + q_k
             options.fileKey = "file";
             options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
             options.mimeType = "image/jpeg";
@@ -992,14 +991,10 @@
 
             options.params = params;
             options.chunkedMode = false;
-			options.headers = {
-			  Connection: "close"
-		   	};
 
             var ft = new FileTransfer();
-            //ft.upload(imageURI, encodeURI("https://www.sigmacivil.com.br/app_sc/rec_foto_uploaded.php?idpm=" + id_prog_manut + "&dia=" + dia_ev + "&mes=" + mes_ev + "&ano=" + ano_ev + "&versao=2.0&econst=" + e_construtora + "&idc=" + id_cliente + "&q_k=" + q_k), win_up, fail_up, options);
-            ft.upload(imageURI, url, win_up, fail_up, options);
-
+            ft.upload(imageURI, "http://www.sigmacivil.com.br/app_sc/rec_foto_uploaded.php?idpm=" + id_prog_manut + "&dia=" + dia_ev + "&mes=" + mes_ev + "&ano=" + ano_ev + "&versao=2.0&econst=" + e_construtora + "&idc=" + id_cliente + "&q_k=" + q_k, win_up, fail_up, options);
+            
         }
 
         var win_up = function (r) { 
