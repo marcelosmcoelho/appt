@@ -993,7 +993,7 @@
             options.chunkedMode = false;
 
             var ft = new FileTransfer();
-            ft.upload(imageURI, "http://www.sigmacivil.com.br/app_sc/rec_foto_uploaded.php?idpm=" + id_prog_manut + "&dia=" + dia_ev + "&mes=" + mes_ev + "&ano=" + ano_ev + "&versao=2.0&econst=" + e_construtora + "&idc=" + id_cliente + "&q_k=" + q_k, win_up, fail_up, options);
+            ft.upload(imageURI, encodeURI("http://www.sigmacivil.com.br/app_sc/rec_foto_uploaded.php?idpm=" + id_prog_manut + "&dia=" + dia_ev + "&mes=" + mes_ev + "&ano=" + ano_ev + "&versao=2.0&econst=" + e_construtora + "&idc=" + id_cliente + "&q_k=" + q_k), win_up, fail_up, options,true);
 
         }
 
@@ -1010,9 +1010,10 @@
 
         }
 
-        var fail_up = function (error) {
+        var fail_up = function (e) {
             document.getElementById("parte_load_content").style.display = "none";
             document.getElementById("parte_load").style.display = "none";
+			alert(e.code+ '---' + e.source + '---' + e.target + '---' + e.http_status + '---' + e.body)
             alert("Não foi feito o upload da imagem!");
         }
         // FIM UPLOAD IMAGEM
