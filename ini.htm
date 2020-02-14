@@ -1,87 +1,142 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css" />
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/mc.js"/></script>
 
-<script src="js/jquery.js"></script>
-<script src="js/jquery.mobile-1.4.5.min.js"></script>
+<head>
+	<meta charset="UTF-8" />
+	<!-- <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/jquery.mobile-1.0.1.min.css" />
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="js/mc.js" />
+	</script>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.4.5.min.js"></script>
 </head>
 
 <body>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 
-document.addEventListener("deviceready", onDeviceReady, false);
+		window.onerror = function (message, url, lineNumber) {
+			//alert("Error: " + message + " in " + url + " at line " + lineNumber);
+			alert(`Error: ${message} in ${url} at line ${lineNumber}`);
+		}
 
-function onDeviceReady(){
+		document.addEventListener("deviceready", onDeviceReady, false);
 
-	iniciar() ;
-}
+		function onDeviceReady() {
 
+			iniciar();
+		}
 
-/////////////////////////////
-function iniciar()
-{ 
-					var db = window.openDatabase("DB_SigmaCivil", "1.0", "DB_SigmaCivil", 200000); //will create database Dummy_DB or open it
-										
-					///////////////  tabela cliente //////////////
-					db.transaction(function (tx) {
-						   tx.executeSql('CREATE TABLE IF NOT EXISTS mtab_cliente (id_cliente INTEGER, e_construtora TEXT)');
-						   tx.executeSql('SELECT * FROM mtab_cliente', [], function (tx, results) {
-						   var len1 = results.rows.length;
+		/////////////////////////////
+		function iniciar() {
 
-					 			   tx.executeSql('CREATE TABLE IF NOT EXISTS mtab_empree (id_empree INTEGER, nome_empree TEXT, status_sync TEXT, data_implantacao_sc TEXT)');
-								   tx.executeSql('SELECT * FROM mtab_empree', [], function (tx, results) {
-								   var len2 = results.rows.length;     //verifica se tem algum comprador (evitar o caso de nao ter escolhido empreendimento e saido antes)
-									   
-										   if (len1>0 && len2>0) {
-												///////////////  FIM tabela empreendimento //////////////	        
-												db.transaction(function (tx) {
-												  tx.executeSql('SELECT * FROM mtab_empree', [], function (tx, results) {
-												   var len = results.rows.length;
-												   var i; 
-												   for (i = 0; i < len; i++){
-													 var  row = results.rows.item(i)
-													 var id_empree= row['id_empree'] ;
-												   }
-													cliente_existe(id_empree);						   
-												 }, null);
-												});										
-												///////////////  FIM tabela empreendimento //////////////	        
-										   }
-										   else {
-   											    cliente_nao_existe();
-										   }
+			var db = window.openDatabase("DB_SigmaCivil", "1.0", "DB_SigmaCivil", 200000); //will create database Dummy_DB or open it
 
-								   }, null);
-
-						   }, null);
-						 
-					});
+			///////////////  tabela cliente //////////////
+			db.transaction(function (tx) {
+				tx.executeSql('CREATE TABLE IF NOT EXISTS mtab_cliente (id_cliente INTEGER, e_construtora TEXT, text1 TEXT, text2 TEXT)');
 
 
+				tx.executeSql('SELECT * FROM mtab_cliente', [], function (tx, results) {  //tirar
+					var len3 = results.rows.length;
 
-                    					
+					
+					var j3;
+					// alert('j3: ' + j3)
+					for (j3 = 0; j3 < len3; j3++) {
+						// alert('j3: ' + j3)
+						var row3 = results.rows.item(j3);
+						var id_cliente = row3['id_cliente'];
+						var e_construtora = row3['e_construtora'];
+						var text1 = row3['text1'];
+						var text2 = row3['text2'];
+						// alert('id_cliente: ' + id_cliente)
+						// alert('e_construtora: ' + e_construtora)
+						// alert('text1: ' + text1)
+						// alert('text2: ' + text2)
+						
+					}//tirar
 
-function cliente_nao_existe(){
- window.location.assign("login.htm");
-}
 
-function cliente_existe(parametro1){
- window.location.assign("empree.htm?e=" + parametro1);
-}
+					tx.executeSql('SELECT * FROM mtab_cliente', [], function (tx, results) {
+						var len1 = results.rows.length;
+
+						var j;
+						for (j = 0; j < len1; j++) {
+							var row = results.rows.item(j);
+							var login = row['text1'];
+							var senha = row['text2'];
+						}
+
+						tx.executeSql('CREATE TABLE IF NOT EXISTS mtab_empree (id_empree INTEGER, nome_empree TEXT, status_sync TEXT, data_implantacao_sc TEXT)');
+						tx.executeSql('SELECT * FROM mtab_empree', [], function (tx, results) {
+							var len2 = results.rows.length;     //verifica se tem algum comprador (evitar o caso de nao ter escolhido empreendimento e saido antes)
+
+							// alert("len1, len2 " + len1 + ',' + len2)
+							if (len1 > 0 && len2 > 0) {
+								///////////////  FIM tabela empreendimento //////////////	        
+								db.transaction(function (tx) {
+									tx.executeSql('SELECT * FROM mtab_empree', [], function (tx, results) {
+										var len = results.rows.length;
+										var i;
+										for (i = 0; i < len; i++) {
+											var row = results.rows.item(i)
+											var id_empree = row['id_empree'];
+										}
+										cliente_existe("?e=" + id_empree + "&l=" + login + "&s=" + senha);
+									}, null);
+								});
+								///////////////  FIM tabela empreendimento //////////////	        
+							}
+							else {
+								cliente_nao_existe();
+							}
+
+						}, null);
+
+					}, null);
 
 
-}
+				}, null); //tirar
 
+			});
 
-</script>
+		}
+
+		function tem_conexao() {
+
+			if (navigator.connection.type == 0 || navigator.connection.type == 'none') {
+				// alert('Sem conexão com internet. Favor se conectar.');
+				return false;
+			}
+			else {
+				return true;
+			}
+
+		}
+
+		function cliente_nao_existe() {
+			// alert('cliente nao existe')
+			window.location.assign("login.htm");
+		}
+
+		function cliente_existe(parametro1) {
+			// alert('cliente existe')
+
+			if (tem_conexao()) {
+
+				window.location.assign("empree_online.htm" + parametro1)
+			} else {
+
+				window.location.assign("empree.htm" + parametro1);
+			}
+		}
+
+	</script>
 
 </body>
+
 </html>
-
-
