@@ -935,6 +935,7 @@
 
                         var row = results.rows.item(0)
                         aux_caminho_imagens = row['caminho_imagens'];
+
                         all_images = aux_caminho_imagens.split("**")
 
                         aux_1 = aux_1 + all_images[q_id] + "**"
@@ -974,9 +975,9 @@
 
         function up_loadPhoto(imageURI, q_k) {
 
-             document.getElementById("parte_load_content").style.display = "block";
-             document.getElementById("parte_load").style.display = "flex";
-             window.location.href = "#ancora123"
+            document.getElementById("parte_load_content").style.display = "block";
+            document.getElementById("parte_load").style.display = "flex";
+            window.location.href = "#ancora123"
 
             var q_k;
             var options = new FileUploadOptions();
@@ -984,51 +985,18 @@
             options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
             options.mimeType = "image/jpeg";
 
-             var params = new Object();
-             params.value1 = "test";
-             params.value2 = "param";
+            var params = new Object();
+            params.value1 = "test";
+            params.value2 = "param";
 
-             options.params = params;
-             options.chunkedMode = false;
+            options.params = params;
+            options.chunkedMode = false;
 
             var ft = new FileTransfer();
-            ft.upload(imageURI, encodeURI("http://www.sigmacivil.com.br/app_sc/rec_foto_uploaded.php?idpm=" + id_prog_manut + "&dia=" + dia_ev + "&mes=" + mes_ev + "&ano=" + ano_ev + "&versao=2.0&econst=" + e_construtora + "&idc=" + id_cliente + "&q_k=" + q_k), win_up, fail_up, options);
-                        
-            // var formData = new FormData();
+            ft.upload(imageURI, "http://www.sigmacivil.com.br/app_sc/rec_foto_uploaded.php?idpm=" + id_prog_manut + "&dia=" + dia_ev + "&mes=" + mes_ev + "&ano=" + ano_ev + "&versao=2.0&econst=" + e_construtora + "&idc=" + id_cliente + "&q_k=" + q_k, win_up, fail_up, options);
 
-            // var image = new File(["foo"], "http://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png");
-            
-            // formData.append('file', image);
-            // alert(image);
-
-            // $.ajax({
-            //     type: "POST",
-            //     url: "https://www.sigmacivil.com.br/app_sc/gui.php",
-            //     enctype: "multipart/form-data",
-            //     data: formData,
-            //     processData: false,
-            //     contentType: false,
-            //     success: function(data) {
-            //          alert(data);
-            //     }
-            // })
-            
-
-        
-
-            // var ft = new FileTransfer();
-            // ft.upload(imageURI, encodeURI("https://camii.xyz/teste.php"), win, fail, options,true);
         }
-        // }
 
-        // var win = function (r){
-        //     alert(r.response);
-        // }
-
-        // var fail = function(r) {
-        //     alert(r.target)
-        //     alert(r.code)
-        // }
         var win_up = function (r) {
 
             var db3 = window.openDatabase("DB_SigmaCivil", "1.0", "DB_SigmaCivil", 200000);
@@ -1045,7 +1013,7 @@
         var fail_up = function (error) {
             document.getElementById("parte_load_content").style.display = "none";
             document.getElementById("parte_load").style.display = "none";
-            alert("Não foi feito o upload da imagem! Error: " + error.code);
+            alert("Não foi feito o upload da imagem!");
         }
         // FIM UPLOAD IMAGEM
 
